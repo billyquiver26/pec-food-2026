@@ -220,6 +220,13 @@
   .rl-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.85;}
   .rl-link{display:inline-block;margin-top:6px;font-size:11px;font-weight:600;color:var(--red);text-decoration:none;}
   .route-caveat{font-size:11px;line-height:1.55;color:var(--muted);border-left:2px solid var(--gold);padding-left:10px;margin-bottom:18px;}
+  .xref{border:1px solid var(--rule);border-left:3px solid var(--gold);border-radius:4px;padding:11px 13px;margin-bottom:8px;background:rgba(191,155,48,0.04);}
+  .xref-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:5px;}
+  .xref-name{font-weight:600;font-size:14px;}
+  .xref-loc{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);white-space:nowrap;}
+  .xref-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.88;}
+  .xref-acts{margin-top:7px;display:flex;gap:14px;}
+  .xref-acts a{font-size:11px;font-weight:600;color:var(--red);text-decoration:none;}
 </style>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#4f6f52">
@@ -889,14 +896,7 @@
       <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Hartley%27s%20Tavern&destination_place_id=ChIJbWsJDlTK14kRQ5AMXem65-Y" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16134768888">Call</a></div>
     </div>
 
-    <div class="card" data-price="2" data-healthy="0" data-cuisine="pub" data-closed-days="0,1" data-open-from="16:00">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Bloomfield%20Public%20House&query_place_id=ChIJIys6eLo11okRx1ag7mo5ugc" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">Bloomfield Public House ↑</div><div class="card-badges"><span class="badge badge-price-2">$$</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.6</span><span class="card-reviews">523 reviews</span></div>
-        <div class="card-note">Already in Bloomfield above. As a bar: oysters, mussels, octopus, good cocktails, a menu that moves with the season. Gluten-free fryer. Pricey, and worth it. <strong>Closed Sunday and Monday.</strong></div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Bloomfield%20Public%20House&destination_place_id=ChIJIys6eLo11okRx1ag7mo5ugc" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16133939292">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">Bloomfield Public House</span><span class="xref-loc">also in Bloomfield ↑</span></div><div class="xref-note">Already in Bloomfield above. As a bar: oysters, mussels, octopus, good cocktails, a menu that moves with the season. Gluten-free fryer. Pricey, and worth it. <strong>Closed Sunday and Monday.</strong></div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=Bloomfield%20Public%20House&query_place_id=ChIJIys6eLo11okRx1ag7mo5ugc" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=Bloomfield%20Public%20House&destination_place_id=ChIJIys6eLo11okRx1ag7mo5ugc" target="_blank" rel="noopener">Directions</a><a href="tel:+16133939292">Call</a></div></div>
 
     <div class="card standout" data-price="1" data-healthy="0" data-cuisine="pub" data-open-from="12:00">
       <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=The%20Acoustic%20Grill&query_place_id=ChIJtR3T-VPK14kRky_c7e0HeR8" target="_blank" rel="noopener">
@@ -948,60 +948,25 @@
       <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=The%20County%20Cider%20Company&destination_place_id=ChIJczwff4fG14kRXInWEvff_mQ" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+13433675110">Call</a></div>
     </div>
 
-    <div class="card" data-price="1" data-healthy="0" data-cuisine="brewery" data-open-from="12:00">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Parsons%20Brewing%20Company&query_place_id=ChIJJ7gozYTL14kRXx7jCgAGnM4" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">Parsons Brewing ↑</div><div class="card-badges"><span class="badge badge-price-1">$</span><span class="badge badge-flag">⚑</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.5</span><span class="card-reviews">866 reviews</span></div>
-        <div class="card-note">Already in Picton above. As a night out: a roller rink, a fire pit, lawn games, a dog-friendly beer garden, and twelve dark beers to take home. The yuzu IPA and mango lassi sour are the picks. <strong>⚠ The Korean bowl is gochujang and soy sauce — soy protein, not lecithin. Order around it.</strong> Beer itself is clear.</div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Parsons%20Brewing%20Company&destination_place_id=ChIJJ7gozYTL14kRXx7jCgAGnM4" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16134769977">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">Parsons Brewing</span><span class="xref-loc">also in Picton ↑</span></div><div class="xref-note">Already in Picton above. As a night out: a roller rink, a fire pit, lawn games, a dog-friendly beer garden, and twelve dark beers to take home. The yuzu IPA and mango lassi sour are the picks. <strong>⚠ The Korean bowl is gochujang and soy sauce — soy protein, not lecithin. Order around it.</strong> Beer itself is clear.</div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=Parsons%20Brewing%20Company&query_place_id=ChIJJ7gozYTL14kRXx7jCgAGnM4" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=Parsons%20Brewing%20Company&destination_place_id=ChIJJ7gozYTL14kRXx7jCgAGnM4" target="_blank" rel="noopener">Directions</a><a href="tel:+16134769977">Call</a></div></div>
 
-    <div class="card" data-price="1" data-healthy="0" data-cuisine="brewery" data-open-from="11:30">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=555%20Brewing%20Co&query_place_id=ChIJtcpOl1bK14kRgHTMrR1w5rE" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">555 Brewing Co ↑</div><div class="card-badges"><span class="badge badge-price-1">$</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.4</span><span class="card-reviews">848 reviews</span></div>
-        <div class="card-note">Already in Picton above. Wood-fired pizza and a deep tap list, right on Main. Belgian wit, west coast IPA, hazy pale. Unassuming from the street. Service is transactional when quiet. Closes 9pm — a first drink, not a last one.</div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=555%20Brewing%20Co&destination_place_id=ChIJtcpOl1bK14kRgHTMrR1w5rE" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16134765556">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">555 Brewing Co</span><span class="xref-loc">also in Picton ↑</span></div><div class="xref-note">Already in Picton above. Wood-fired pizza and a deep tap list, right on Main. Belgian wit, west coast IPA, hazy pale. Unassuming from the street. Service is transactional when quiet. Closes 9pm — a first drink, not a last one.</div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=555%20Brewing%20Co&query_place_id=ChIJtcpOl1bK14kRgHTMrR1w5rE" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=555%20Brewing%20Co&destination_place_id=ChIJtcpOl1bK14kRgHTMrR1w5rE" target="_blank" rel="noopener">Directions</a><a href="tel:+16134765556">Call</a></div></div>
 
   </div>
 
   <div class="sub-label"><span class="sub-label-main">Hotel Bars</span><span class="sub-label-note">⚠ ask before any cocktail — amaretto, orgeat and Frangelico are nut-based</span></div>
   <div class="grid">
 
-    <div class="card standout" data-price="2" data-healthy="0" data-cuisine="cocktail">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=The%20Royal%20Hotel&query_place_id=ChIJNWroqFPK14kRntvJcE9U_XQ" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">The Royal Hotel ↑</div><div class="card-badges"><span class="badge badge-price-2">$$</span><span class="badge badge-flag">⚑</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.7</span><span class="card-reviews">1,236 reviews</span></div>
-        <div class="card-note">Already in Picton above. The lobby bar is the room — modern, attentive, bartenders who'll build off-menu. One County native finds it cold and disconnected from the building's history. The cocktail list is short. <strong>Google publishes no bar hours.</strong></div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=The%20Royal%20Hotel&destination_place_id=ChIJNWroqFPK14kRntvJcE9U_XQ" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16139612600">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">The Royal Hotel</span><span class="xref-loc">also in Picton ↑</span></div><div class="xref-note">Already in Picton above. The lobby bar is the room — modern, attentive, bartenders who'll build off-menu. One County native finds it cold and disconnected from the building's history. The cocktail list is short. <strong>Google publishes no bar hours.</strong></div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=The%20Royal%20Hotel&query_place_id=ChIJNWroqFPK14kRntvJcE9U_XQ" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=The%20Royal%20Hotel&destination_place_id=ChIJNWroqFPK14kRntvJcE9U_XQ" target="_blank" rel="noopener">Directions</a><a href="tel:+16139612600">Call</a></div></div>
 
-    <div class="card" data-price="2" data-healthy="0" data-cuisine="cocktail" data-open-from="08:00">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Drake%20Devonshire&query_place_id=ChIJwwK_h_FI1okRlPE0vDYCTDQ" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">Drake Devonshire ↑</div><div class="card-badges"><span class="badge badge-price-2">$$</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.2</span><span class="card-reviews">2,849 reviews</span></div>
-        <div class="card-note">Already in Wellington above. On the water at Wharf St. <strong>Happy hour is the play</strong> — martinis and espresso martinis around $13, well made, before the room fills at 5:30. Open to 10pm Fri and Sat. The lowest-rated room on this list by some margin: recurring complaints about hostess-desk chaos, cold appetisers and long waits at dinner. Come for a drink, not a meal.</div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Drake%20Devonshire&destination_place_id=ChIJwwK_h_FI1okRlPE0vDYCTDQ" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16133993338">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">Drake Devonshire</span><span class="xref-loc">also in Wellington ↑</span></div><div class="xref-note">Already in Wellington above. On the water at Wharf St. <strong>Happy hour is the play</strong> — martinis and espresso martinis around $13, well made, before the room fills at 5:30. Open to 10pm Fri and Sat. The lowest-rated room on this list by some margin: recurring complaints about hostess-desk chaos, cold appetisers and long waits at dinner. Come for a drink, not a meal.</div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=Drake%20Devonshire&query_place_id=ChIJwwK_h_FI1okRlPE0vDYCTDQ" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=Drake%20Devonshire&destination_place_id=ChIJwwK_h_FI1okRlPE0vDYCTDQ" target="_blank" rel="noopener">Directions</a><a href="tel:+16133993338">Call</a></div></div>
 
   </div>
 
   <div class="sub-label"><span class="sub-label-main">Upscale Bars &amp; Restaurants with Bars</span><span class="sub-label-note">the good drinking · two carry allergen risk</span></div>
   <div class="grid">
 
-    <div class="card" data-price="1" data-healthy="0" data-cuisine="cocktail" data-open-from="12:00">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=La%20Condesa&query_place_id=ChIJjwp7ak5J1okROOK7FvCE1QE" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">La Condesa ↑</div><div class="card-badges"><span class="badge badge-price-1">$</span><span class="badge badge-flag">⚑</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.7</span><span class="card-reviews">1,380 reviews</span></div>
-        <div class="card-note">Already in Wellington above. Sit at the bar — the bartenders are the draw, the drinks are unusual, the tuna tostada is enormous. Open to 10pm, seven days. Dissent exists: one reviewer calls it vibes over food, average Mexican at a high price. <strong>⚠ Mole is a peanut risk. Confirm every dish.</strong></div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=La%20Condesa&destination_place_id=ChIJjwp7ak5J1okROOK7FvCE1QE" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16133992007">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">La Condesa</span><span class="xref-loc">also in Wellington ↑</span></div><div class="xref-note">Already in Wellington above. Sit at the bar — the bartenders are the draw, the drinks are unusual, the tuna tostada is enormous. Open to 10pm, seven days. Dissent exists: one reviewer calls it vibes over food, average Mexican at a high price. <strong>⚠ Mole is a peanut risk. Confirm every dish.</strong></div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=La%20Condesa&query_place_id=ChIJjwp7ak5J1okROOK7FvCE1QE" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=La%20Condesa&destination_place_id=ChIJjwp7ak5J1okROOK7FvCE1QE" target="_blank" rel="noopener">Directions</a><a href="tel:+16133992007">Call</a></div></div>
 
     <div class="card standout" data-price="2" data-healthy="0" data-cuisine="cocktail" data-open-from="17:00">
       <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Bocado%20Restaurant&query_place_id=ChIJhYzDxFjL14kRfIugAY6-aaI" target="_blank" rel="noopener">
@@ -1012,23 +977,9 @@
       <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Bocado%20Restaurant&destination_place_id=ChIJhYzDxFjL14kRfIugAY6-aaI" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16134762208">Call</a></div>
     </div>
 
-    <div class="card" data-price="2" data-healthy="0" data-cuisine="cocktail" data-closed-days="2" data-open-from="16:30">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Flame%20%2B%20Smith&query_place_id=ChIJ8zxBegM11okRQ4Lcasppees" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">Flame + Smith ↑</div><div class="card-badges"><span class="badge badge-price-2">$$</span><span class="badge badge-flag">⚑</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.6</span><span class="card-reviews">938 reviews</span></div>
-        <div class="card-note">Already in Bloomfield above. Oysters, cocktails, a serious wine list, a wood stove, and a working kitchen worth sitting near. Steaks justify the price. The online menu doesn't match the printed one — don't pre-plan a dish. <strong>⚠ The mezze board runs spreads and dukkah. Ask.</strong> Closed Tuesday.</div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=Flame%20%2B%20Smith&destination_place_id=ChIJ8zxBegM11okRQ4Lcasppees" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16133931006">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">Flame + Smith</span><span class="xref-loc">also in Bloomfield ↑</span></div><div class="xref-note">Already in Bloomfield above. Oysters, cocktails, a serious wine list, a wood stove, and a working kitchen worth sitting near. Steaks justify the price. The online menu doesn't match the printed one — don't pre-plan a dish. <strong>⚠ The mezze board runs spreads and dukkah. Ask.</strong> Closed Tuesday.</div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=Flame%20%2B%20Smith&query_place_id=ChIJ8zxBegM11okRQ4Lcasppees" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=Flame%20%2B%20Smith&destination_place_id=ChIJ8zxBegM11okRQ4Lcasppees" target="_blank" rel="noopener">Directions</a><a href="tel:+16133931006">Call</a></div></div>
 
-    <div class="card" data-price="1" data-healthy="0" data-cuisine="cocktail" data-closed-days="3" data-open-from="11:00">
-      <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=The%20Beau%20Bistro&query_place_id=ChIJVYwlRCzL14kRKjAxkalWVgM" target="_blank" rel="noopener">
-        <div class="card-top"><div class="card-name">The Beau Bistro ↑</div><div class="card-badges"><span class="badge badge-price-1">$</span><span class="badge badge-flag">⚑</span></div></div>
-        <div class="card-meta"><span class="card-stars">★ 4.6</span><span class="card-reviews">195 reviews</span></div>
-        <div class="card-note"><strong>In Picton, not Bloomfield</strong> — 161 Main St W. Already in Picton above. Lively bar room, live jazz some evenings, hand-cut fries, large portions. Only 195 reviews, and service runs inattentive. Closed Wednesday. One of the few places open when Picton shuts.</div>
-      </a>
-      <div class="card-actions"><a class="card-action" href="https://www.google.com/maps/dir/?api=1&destination=The%20Beau%20Bistro&destination_place_id=ChIJVYwlRCzL14kRKjAxkalWVgM" target="_blank" rel="noopener">Directions</a><a class="card-action" href="tel:+16134764777">Call</a></div>
-    </div>
+    <div class="xref"><div class="xref-head"><span class="xref-name">The Beau Bistro</span><span class="xref-loc">also in Picton ↑</span></div><div class="xref-note"><strong>In Picton, not Bloomfield</strong> — 161 Main St W. Already in Picton above. Lively bar room, live jazz some evenings, hand-cut fries, large portions. Only 195 reviews, and service runs inattentive. Closed Wednesday. One of the few places open when Picton shuts.</div><div class="xref-acts"><a href="https://www.google.com/maps/search/?api=1&query=The%20Beau%20Bistro&query_place_id=ChIJVYwlRCzL14kRKjAxkalWVgM" target="_blank" rel="noopener">Open</a><a href="https://www.google.com/maps/dir/?api=1&destination=The%20Beau%20Bistro&destination_place_id=ChIJVYwlRCzL14kRKjAxkalWVgM" target="_blank" rel="noopener">Directions</a><a href="tel:+16134764777">Call</a></div></div>
 
     <div class="card" data-price="2" data-healthy="0" data-cuisine="cocktail">
       <a class="card-body" href="https://www.google.com/maps/search/?api=1&query=Cellar%20Door%20Brasserie%20%26%20Lounge&query_place_id=ChIJx8wkqVPK14kRTsSjdwak9V8" target="_blank" rel="noopener">
