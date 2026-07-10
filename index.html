@@ -187,6 +187,37 @@
   .fb-jump{text-decoration:none;border-color:var(--gold);color:var(--gold);}
   .fb-jump:hover{background:var(--gold);color:#fff;}
   #nightlife{scroll-margin-top:120px;}
+  /* interactive antiquing route */
+  .route-box{background:rgba(79,111,82,0.06);border:1px solid rgba(79,111,82,0.25);border-radius:6px;padding:16px;margin-bottom:14px;}
+  .route-why{font-size:13px;line-height:1.65;color:var(--ink);}
+  .route-why em{font-style:normal;font-weight:600;}
+  .route-stats{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .rstat{flex:1;min-width:70px;text-align:center;background:#fff;border:1px solid var(--rule);border-radius:4px;padding:8px 4px;}
+  .rs-val{display:block;font-weight:700;font-size:14px;color:var(--red);}
+  .rs-lab{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px;}
+  .route-map{height:340px;}
+  .route-pin{width:28px;height:28px;border-radius:50%;background:#4f6f52;color:#fff;font:700 13px/28px -apple-system,system-ui,sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);}
+  .route-pin.pin-hard{background:#c0392b;}
+  .route-pin.pin-soft{background:#b8860b;}
+  .route-open{display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:12px;border-radius:5px;margin:12px 0;letter-spacing:.02em;}
+  .route-open:hover{opacity:.9;}
+  .route-list{list-style:none;padding:0;margin:0 0 12px;}
+  .route-item{display:flex;gap:12px;padding:12px;border:1px solid var(--rule);border-radius:5px;margin-bottom:8px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s;}
+  .route-item:hover{border-color:var(--red);}
+  .route-item.active{border-color:var(--red);background:rgba(79,111,82,0.07);}
+  .rl-num{flex:0 0 26px;height:26px;border-radius:50%;background:#4f6f52;color:#fff;font:700 12px/26px -apple-system,system-ui,sans-serif;text-align:center;}
+  .rl-num-hard{background:#c0392b;}
+  .rl-body{flex:1;min-width:0;}
+  .rl-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .rl-name{font-weight:600;font-size:14px;}
+  .rl-time{font-size:11px;color:var(--muted);white-space:nowrap;}
+  .rl-meta{margin:3px 0 5px;}
+  .rl-hrs{font-size:11px;color:var(--muted);}
+  .rl-warn{font-size:11px;font-weight:600;color:#c0392b;}
+  .rl-soft{font-size:11px;font-weight:600;color:#8a6508;}
+  .rl-note{font-size:12px;line-height:1.55;color:var(--ink);opacity:.85;}
+  .rl-link{display:inline-block;margin-top:6px;font-size:11px;font-weight:600;color:var(--red);text-decoration:none;}
+  .route-caveat{font-size:11px;line-height:1.55;color:var(--muted);border-left:2px solid var(--gold);padding-left:10px;margin-bottom:18px;}
 </style>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#4f6f52">
@@ -1081,17 +1112,40 @@
     <h2 class="section-title">Antiquing &amp; Vintage</h2>
     <span class="section-note">your shared love — the County is one of Ontario's great antiquing &amp; vintage-hunting grounds</span>
   </div>
+  <div class="sub-label"><span class="sub-label-main">🗺️ The Saturday Route</span><span class="sub-label-note">all 9, one loop, no backtracking · tap a stop to find it on the map</span></div>
+
+  <div class="route-box">
+    <div class="route-why">
+      <strong>Why Saturday.</strong> Two of the nine are shut on Sunday — <em>County RUST</em> (Fri &amp; Sat only) and <em>Second Time Around</em>. All nine are open Saturday.<br>
+      <strong>Why this order.</strong> The two hardest closing times sit at opposite ends of the county: Second Time Around locks up at <strong>3:00 PM</strong> in Picton, County RUST at <strong>4:00 PM</strong> in Wellington. Sweeping east&nbsp;→&nbsp;west clears the 3 PM door before 11 AM and reaches the 4 PM door with ~40 minutes spare. Mary Street opens at 11:00 and lands third. The three Picton shops are a 5-minute walk apart — <strong>park once.</strong>
+    </div>
+    <div class="route-stats">
+      <div class="rstat"><span class="rs-val">9</span><span class="rs-lab">stops</span></div>
+      <div class="rstat"><span class="rs-val">~30 km</span><span class="rs-lab">driving</span></div>
+      <div class="rstat"><span class="rs-val">~40 min</span><span class="rs-lab">behind wheel</span></div>
+      <div class="rstat"><span class="rs-val">~5.5 h</span><span class="rs-lab">door to door</span></div>
+    </div>
+  </div>
+
+  <div class="section-map route-map" id="map-antiquing"></div>
+
+  <a class="route-open" id="routeOpenAll" href="#" target="_blank" rel="noopener">▶ Open all 9 stops in Google Maps</a>
+
+  <ol class="route-list" id="routeList"></ol>
+
+  <div class="route-caveat">Drive times are estimated from coordinates and road geometry — not a routing engine. The <strong>sequence</strong> holds regardless; the <strong>minutes</strong> could be off by ten. Arrival times assume a 10&nbsp;AM start and a brisk pace. Check the live route in Google Maps before betting on the 3:20 arrival at County RUST.</div>
+
   <div class="sub-label"><span class="sub-label-main">Picton</span><span class="sub-label-note">vintage · consignment · thrift</span></div>
   <div class="essentials">
-    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Mary%20Street%20Vintage%20Picton&query_place_id=ChIJRRHMAezL14kRh3RdcKPMqbc" target="_blank" rel="noopener"><div class="ess-tag">Vintage ★</div><div class="ess-content"><div class="ess-name">Mary Street Vintage</div><div class="ess-why">Picton's best vintage — a tightly curated clothing shop tucked just off Main, vintage Levi's, a back room of records, upcycled one-offs. Open Sat &amp; Sun (closed Tue–Thu). The one to prioritize for Suz.</div></div></a>
+    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Mary%20Street%20Vintage%20Picton&query_place_id=ChIJRRHMAezL14kRh3RdcKPMqbc" target="_blank" rel="noopener"><div class="ess-tag">Vintage ★</div><div class="ess-content"><div class="ess-name">Mary Street Vintage</div><div class="ess-why">Picton's best vintage — a tightly curated clothing shop tucked just off Main, vintage Levi's, a back room of records, upcycled one-offs. Open Mon, Fri, Sat &amp; Sun 11–5 (closed Tue–Thu). The one to prioritize for Suz.</div></div></a>
     <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=City%20Revival%20Picton&query_place_id=ChIJ_TVqd5rL14kRisde0OsdXSs" target="_blank" rel="noopener"><div class="ess-tag">Consignment</div><div class="ess-content"><div class="ess-name">City Revival</div><div class="ess-why">High-end designer consignment on Picton Main — quality second-hand, beautifully merchandised. Open daily. Note: curated luxury resale, not bargain thrift, so prices run higher.</div></div></a>
-    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Second%20Time%20Around%20Picton&query_place_id=ChIJW3n2jlbK14kRFItWV077wQ8" target="_blank" rel="noopener"><div class="ess-tag">Thrift</div><div class="ess-content"><div class="ess-name">Second Time Around</div><div class="ess-why">Genuine charity thrift on Picton Main — real bargains, household finds, a big craft &amp; yarn corner. ⚠ Closed Sunday — go Saturday.</div></div></a>
+    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Second%20Time%20Around%20Picton&query_place_id=ChIJW3n2jlbK14kRFItWV077wQ8" target="_blank" rel="noopener"><div class="ess-tag">Thrift</div><div class="ess-content"><div class="ess-name">Second Time Around</div><div class="ess-why">Genuine charity thrift on Picton Main — real bargains, household finds, a big craft &amp; yarn corner. ⚠ Closes <strong>3 PM Saturday</strong> (an hour earlier than weekdays) and closed Sunday — go Saturday morning.</div></div></a>
   </div>
   <div class="sub-label"><span class="sub-label-main">Bloomfield &amp; Wellington</span><span class="sub-label-note">the antiques trail</span></div>
   <div class="essentials">
     <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=County%20Traders%20Bloomfield&query_place_id=ChIJNw_J82I11okRirG6dWmixP8" target="_blank" rel="noopener"><div class="ess-tag">Antiques</div><div class="ess-content"><div class="ess-name">County Traders</div><div class="ess-why">Bloomfield's beloved family-run antiques &amp; secondhand — furniture, glassware, jewelry, knick-knacks at fair prices. Open daily; easy to lose an hour here.</div></div></a>
-    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Hand%20Works%20Tammy%20Love%20Bloomfield&query_place_id=ChIJZbtATmM11okRkCA0OmcC26M" target="_blank" rel="noopener"><div class="ess-tag">Eclectic</div><div class="ess-content"><div class="ess-name">Hand Works – Tammy Love</div><div class="ess-why">A wildly eclectic century-house in Bloomfield where everything's for sale and you're invited to open every drawer — antiques, oddities, art (you can even book a room). Open Thu–Sun; hours can be quirky.</div></div></a>
-    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Dead%20People%27s%20Stuff%20Antiques%20Bloomfield&query_place_id=ChIJ3YsG2n011okRhVTg9OGpQ8g" target="_blank" rel="noopener"><div class="ess-tag">Antiques</div><div class="ess-content"><div class="ess-name">Dead People's Stuff</div><div class="ess-why">The County's cult-name antique shop in Bloomfield — eclectic finds in a character house. ⚑ Seasonal hours — confirm it's open before you drive out.</div></div></a>
+    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Hand%20Works%20Tammy%20Love%20Bloomfield&query_place_id=ChIJZbtATmM11okRkCA0OmcC26M" target="_blank" rel="noopener"><div class="ess-tag">Eclectic</div><div class="ess-content"><div class="ess-name">Hand Works – Tammy Love</div><div class="ess-why">A wildly eclectic century-house in Bloomfield where everything's for sale and you're invited to open every drawer — antiques, oddities, art (you can even book a room). Open Thu–Sun. Google shows &ldquo;open 24 hours&rdquo; Thu–Sat — a data artifact, not a fact. Sunday 11–4.</div></div></a>
+    <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=Dead%20People%27s%20Stuff%20Antiques%20Bloomfield&query_place_id=ChIJ3YsG2n011okRhVTg9OGpQ8g" target="_blank" rel="noopener"><div class="ess-tag">Antiques</div><div class="ess-content"><div class="ess-name">Dead People's Stuff</div><div class="ess-why">The County's cult-name antique shop in Bloomfield — eclectic finds in a character house. ⚑ Google publishes <strong>no hours at all</strong> — not reduced, none. Lowest-rated of the nine (4.1★). It's on your way out of Bloomfield, so trying the door costs nothing.</div></div></a>
     <a class="ess-row" href="https://www.google.com/maps/search/?api=1&query=County%20RUST%20Wellington&query_place_id=ChIJ5XZ66-VJ1okR-ZA4nV-O_vk" target="_blank" rel="noopener"><div class="ess-tag">Antiques</div><div class="ess-content"><div class="ess-name">County RUST</div><div class="ess-why">A beautifully curated little antiques shop in Wellington — every piece thoughtfully displayed. ⚠ Fri &amp; Sat only (closed Sun) — go Saturday.</div></div></a>
   </div>
   <div class="sub-label"><span class="sub-label-main">On the Sandbanks road</span><span class="sub-label-note">pair with a beach day</span></div>
@@ -1180,5 +1234,93 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ── PWA: register the network-first service worker ── */
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}
 </script>
+<script>
+/* ===== INTERACTIVE ANTIQUING ROUTE ===== */
+(function(){
+  var STOPS = [
+    {n:1, name:"City Revival", pid:"ChIJ_TVqd5rL14kRisde0OsdXSs", lat:44.008399,  lng:-77.1399517, at:"10:00 AM",
+     hrs:"Sat 9–5 · open daily", warn:"", note:"Designer consignment, not thrift. Opens 9 — start here while Mary Street is shut."},
+    {n:2, name:"Second Time Around", pid:"ChIJW3n2jlbK14kRFItWV077wQ8", lat:44.0059146, lng:-77.1454659, at:"10:35 AM",
+     hrs:"Sat 10–3 · CLOSED SUN", warn:"hard", note:"Closes 3 PM Saturday — the tightest door of the day. That is why it is second, not last."},
+    {n:3, name:"Mary Street Vintage", pid:"ChIJRRHMAezL14kRh3RdcKPMqbc", lat:44.0054492, lng:-77.1429213, at:"11:05 AM",
+     hrs:"Opens 11:00 · closed Tue–Thu", warn:"", note:"5.0★. Off Main, so it stays unpicked. Records, vintage Levi's, an upcycled rack. The one for Suz."},
+    {n:4, name:"County Traders", pid:"ChIJNw_J82I11okRirG6dWmixP8", lat:43.984193,  lng:-77.2249426, at:"11:55 AM",
+     hrs:"Daily 10–5", warn:"", note:"12 min west. Family-run, fair prices, glassware and furniture. Easy to lose an hour — don't."},
+    {n:5, name:"Hand Works – Tammy Love", pid:"ChIJZbtATmM11okRkCA0OmcC26M", lat:43.9882186, lng:-77.2268514, at:"12:30 PM",
+     hrs:"Thu–Sun · hours unreliable", warn:"soft", note:"600 m up the road. Open every drawer. Google reports \u201copen 24 hours\u201d Thu–Sat — that is a data artifact, not a fact."},
+    {n:6, name:"Dead People's Stuff", pid:"ChIJ3YsG2n011okRhVTg9OGpQ8g", lat:43.9858234, lng:-77.2343582, at:"1:05 PM",
+     hrs:"NO HOURS PUBLISHED", warn:"soft", note:"The weak link — Google lists no hours at all, and it is the lowest-rated of the nine. It sits on your way out of Bloomfield, so trying the door costs nothing."},
+    {n:7, name:"The Local Store – PEC", pid:"ChIJ-WUox_VK1okRsYh4stLmJTk", lat:43.9620048, lng:-77.2387175, at:"1:50 PM",
+     hrs:"Daily 10–6", warn:"", note:"Turn south onto Rd 12. 150+ makers, a gallery upstairs, goats out back. Latest close on the route — eat here."},
+    {n:8, name:"MacCool's Re-Use", pid:"ChIJjSPIXalL1okRmly8luUCF38", lat:43.9465288, lng:-77.2398816, at:"2:25 PM",
+     hrs:"Daily 10–5", warn:"", note:"Deepest point of the loop. Roadside barn, mid-century furniture, antique toys. Leave by 3:00 sharp."},
+    {n:9, name:"County RUST", pid:"ChIJ5XZ66-VJ1okR-ZA4nV-O_vk", lat:43.9527767, lng:-77.3505488, at:"3:20 PM",
+     hrs:"Fri & Sat only · closes 4 PM", warn:"hard", note:"Rd 12 carries you northwest into Wellington — no backtracking. 5.0★ on 9 reviews. Drake Devonshire is 4 minutes away for a drink."}
+  ];
+
+  var el = document.getElementById('map-antiquing');
+  var listEl = document.getElementById('routeList');
+  if(!el || !listEl || typeof L === 'undefined') return;
+
+  /* ---- map ---- */
+  var m = L.map('map-antiquing', {scrollWheelZoom:false, dragging:true, touchZoom:true, doubleClickZoom:true, zoomControl:true, attributionControl:true, tap:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://openstreetmap.org/copyright">OSM</a>',maxZoom:19}).addTo(m);
+
+  var line = STOPS.map(function(s){return [s.lat,s.lng];});
+  L.polyline(line, {color:'#4f6f52', weight:3, opacity:0.75, dashArray:'6,6'}).addTo(m);
+
+  var markers = {};
+  STOPS.forEach(function(s){
+    var cls = 'route-pin' + (s.warn==='hard' ? ' pin-hard' : (s.warn==='soft' ? ' pin-soft' : ''));
+    var icon = L.divIcon({className:'', html:'<div class="'+cls+'">'+s.n+'</div>', iconSize:[28,28], iconAnchor:[14,14]});
+    var mk = L.marker([s.lat,s.lng], {icon:icon}).addTo(m);
+    mk.bindPopup('<strong>'+s.n+'. '+s.name+'</strong><br><span style="opacity:.75">'+s.at+' · '+s.hrs+'</span><br><span style="font-size:12px">'+s.note+'</span>');
+    markers[s.n] = mk;
+  });
+  m.fitBounds(line, {padding:[30,30], maxZoom:12});
+
+  /* ---- list, synced to map ---- */
+  var html = '';
+  STOPS.forEach(function(s){
+    var badge = s.warn==='hard' ? '<span class="rl-warn">⚠ '+s.hrs+'</span>'
+              : s.warn==='soft' ? '<span class="rl-soft">⚑ '+s.hrs+'</span>'
+              : '<span class="rl-hrs">'+s.hrs+'</span>';
+    html += '<li class="route-item" data-stop="'+s.n+'">'
+          +   '<div class="rl-num'+(s.warn==='hard'?' rl-num-hard':'')+'">'+s.n+'</div>'
+          +   '<div class="rl-body">'
+          +     '<div class="rl-top"><span class="rl-name">'+s.name+'</span><span class="rl-time">'+s.at+'</span></div>'
+          +     '<div class="rl-meta">'+badge+'</div>'
+          +     '<div class="rl-note">'+s.note+'</div>'
+          +     '<a class="rl-link" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.name)+'&query_place_id='+s.pid+'" target="_blank" rel="noopener">Open in Maps →</a>'
+          +   '</div>'
+          + '</li>';
+  });
+  listEl.innerHTML = html;
+
+  listEl.addEventListener('click', function(e){
+    if(e.target.closest('.rl-link')) return;           /* let the real link through */
+    var li = e.target.closest('.route-item'); if(!li) return;
+    var n = +li.getAttribute('data-stop'); var mk = markers[n]; if(!mk) return;
+    [].slice.call(listEl.querySelectorAll('.route-item')).forEach(function(x){x.classList.toggle('active', x===li);});
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    m.setView(mk.getLatLng(), 14, {animate:true});
+    mk.openPopup();
+  });
+
+  /* ---- full-route handoff to Google Maps (origin + 7 waypoints + destination) ---- */
+  var origin = STOPS[0], dest = STOPS[STOPS.length-1], mids = STOPS.slice(1,-1);
+  var url = 'https://www.google.com/maps/dir/?api=1'
+          + '&origin='          + encodeURIComponent(origin.name)
+          + '&origin_place_id=' + origin.pid
+          + '&destination='          + encodeURIComponent(dest.name)
+          + '&destination_place_id=' + dest.pid
+          + '&waypoints='          + mids.map(function(s){return encodeURIComponent(s.name);}).join('%7C')
+          + '&waypoint_place_ids=' + mids.map(function(s){return s.pid;}).join('%7C')
+          + '&travelmode=driving';
+  var btn = document.getElementById('routeOpenAll');
+  if(btn) btn.setAttribute('href', url);
+})();
+</script>
+
 </body>
 </html>
