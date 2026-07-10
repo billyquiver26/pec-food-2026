@@ -1,6 +1,6 @@
 /* Travel Food Guide — offline service worker (NETWORK-FIRST for content) */
 /* Bump CACHE (v1 -> v2 ...) whenever you want to force all installed clients to refresh. */
-const CACHE = 'food-guide-v4';
+const CACHE = 'food-guide-v5';
 const SHELL = ['./','./index.html','./manifest.json'];
 self.addEventListener('install', (e)=>{ self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).catch(()=>{})); });
 self.addEventListener('activate', (e)=>{ e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())); });
