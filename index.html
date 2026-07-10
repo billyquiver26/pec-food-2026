@@ -199,6 +199,8 @@
   .route-pin{width:28px;height:28px;border-radius:50%;background:#4f6f52;color:#fff;font:700 13px/28px -apple-system,system-ui,sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);}
   .route-pin.pin-hard{background:#c0392b;}
   .route-pin.pin-soft{background:#b8860b;}
+  .route-pin.pin-home{background:#2c3e50;font-size:17px;line-height:30px;width:30px;height:30px;}
+  .rl-leg{font-size:11px;color:var(--muted);}
   .route-open{display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:12px;border-radius:5px;margin:12px 0;letter-spacing:.02em;}
   .route-open:hover{opacity:.9;}
   .route-list{list-style:none;padding:0;margin:0 0 12px;}
@@ -1116,24 +1118,25 @@
 
   <div class="route-box">
     <div class="route-why">
+      <strong>Anchored to your bed.</strong> Start and finish at <em>Our Space the Perfect Place B&amp;B</em>, 964 County Rd 11 — which sits south of Bloomfield, 3&nbsp;km from MacCool's and 11.5&nbsp;km from County RUST.<br>
       <strong>Why Saturday.</strong> Two of the nine are shut on Sunday — <em>County RUST</em> (Fri &amp; Sat only) and <em>Second Time Around</em>. All nine are open Saturday.<br>
-      <strong>Why this order.</strong> The two hardest closing times sit at opposite ends of the county: Second Time Around locks up at <strong>3:00 PM</strong> in Picton, County RUST at <strong>4:00 PM</strong> in Wellington. Sweeping east&nbsp;→&nbsp;west clears the 3 PM door before 11 AM and reaches the 4 PM door with ~40 minutes spare. Mary Street opens at 11:00 and lands third. The three Picton shops are a 5-minute walk apart — <strong>park once.</strong>
+      <strong>Why this order.</strong> Drive northeast to Picton first, work west through Bloomfield to Wellington, then ride County Rd&nbsp;12 back southeast to the two barns three minutes from your door. Second Time Around's <strong>3:00 PM</strong> door is cleared by 10:35&nbsp;AM. County RUST's <strong>4:00 PM</strong> door is reached at 1:40&nbsp;PM with <strong>2h20 of slack</strong>. The two latest-closing shops land last, where running late costs nothing. The three Picton shops are a 5-minute walk apart — <strong>park once.</strong>
     </div>
     <div class="route-stats">
       <div class="rstat"><span class="rs-val">9</span><span class="rs-lab">stops</span></div>
-      <div class="rstat"><span class="rs-val">~30 km</span><span class="rs-lab">driving</span></div>
-      <div class="rstat"><span class="rs-val">~40 min</span><span class="rs-lab">behind wheel</span></div>
-      <div class="rstat"><span class="rs-val">~5.5 h</span><span class="rs-lab">door to door</span></div>
+      <div class="rstat"><span class="rs-val">~54 km</span><span class="rs-lab">round trip</span></div>
+      <div class="rstat"><span class="rs-val">~65 min</span><span class="rs-lab">behind wheel</span></div>
+      <div class="rstat"><span class="rs-val">10 – 3:50</span><span class="rs-lab">door to door</span></div>
     </div>
   </div>
 
   <div class="section-map route-map" id="map-antiquing"></div>
 
-  <a class="route-open" id="routeOpenAll" href="#" target="_blank" rel="noopener">▶ Open all 9 stops in Google Maps</a>
+  <a class="route-open" id="routeOpenAll" href="#" target="_blank" rel="noopener">▶ Open the full loop in Google Maps — B&amp;B to B&amp;B</a>
 
   <ol class="route-list" id="routeList"></ol>
 
-  <div class="route-caveat">Drive times are estimated from coordinates and road geometry — not a routing engine. The <strong>sequence</strong> holds regardless; the <strong>minutes</strong> could be off by ten. Arrival times assume a 10&nbsp;AM start and a brisk pace. Check the live route in Google Maps before betting on the 3:20 arrival at County RUST.</div>
+  <div class="route-caveat">Drive times are estimated from coordinates and road geometry — not a routing engine. The <strong>sequence</strong> holds regardless; the <strong>minutes</strong> could be off by ten. Arrival times assume a 10&nbsp;AM start and a brisk pace. Check the live route in Google Maps before betting on the timings. The loop assumes County Rd 12 runs through from Wellington back to Bloomfield; if it does not, stop 8 costs an extra ten minutes and nothing else changes — both remaining shops close late.</div>
 
   <div class="sub-label"><span class="sub-label-main">Picton</span><span class="sub-label-note">vintage · consignment · thrift</span></div>
   <div class="essentials">
@@ -1235,70 +1238,78 @@ document.addEventListener('DOMContentLoaded', function () {
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}
 </script>
 <script>
-/* ===== INTERACTIVE ANTIQUING ROUTE ===== */
+/* ===== INTERACTIVE ANTIQUING ROUTE (anchored to the B&B) ===== */
 (function(){
+  var HOME = {name:"Our Space the Perfect Place B&B", pid:"ChIJzyJ8FbdL1okR_Jghj6HX-9c",
+              lat:43.9283638, lng:-77.2106552, addr:"964 County Rd 11, Picton"};
+
   var STOPS = [
-    {n:1, name:"City Revival", pid:"ChIJ_TVqd5rL14kRisde0OsdXSs", lat:44.008399,  lng:-77.1399517, at:"10:00 AM",
-     hrs:"Sat 9–5 · open daily", warn:"", note:"Designer consignment, not thrift. Opens 9 — start here while Mary Street is shut."},
-    {n:2, name:"Second Time Around", pid:"ChIJW3n2jlbK14kRFItWV077wQ8", lat:44.0059146, lng:-77.1454659, at:"10:35 AM",
-     hrs:"Sat 10–3 · CLOSED SUN", warn:"hard", note:"Closes 3 PM Saturday — the tightest door of the day. That is why it is second, not last."},
-    {n:3, name:"Mary Street Vintage", pid:"ChIJRRHMAezL14kRh3RdcKPMqbc", lat:44.0054492, lng:-77.1429213, at:"11:05 AM",
-     hrs:"Opens 11:00 · closed Tue–Thu", warn:"", note:"5.0★. Off Main, so it stays unpicked. Records, vintage Levi's, an upcycled rack. The one for Suz."},
-    {n:4, name:"County Traders", pid:"ChIJNw_J82I11okRirG6dWmixP8", lat:43.984193,  lng:-77.2249426, at:"11:55 AM",
-     hrs:"Daily 10–5", warn:"", note:"12 min west. Family-run, fair prices, glassware and furniture. Easy to lose an hour — don't."},
-    {n:5, name:"Hand Works – Tammy Love", pid:"ChIJZbtATmM11okRkCA0OmcC26M", lat:43.9882186, lng:-77.2268514, at:"12:30 PM",
-     hrs:"Thu–Sun · hours unreliable", warn:"soft", note:"600 m up the road. Open every drawer. Google reports \u201copen 24 hours\u201d Thu–Sat — that is a data artifact, not a fact."},
-    {n:6, name:"Dead People's Stuff", pid:"ChIJ3YsG2n011okRhVTg9OGpQ8g", lat:43.9858234, lng:-77.2343582, at:"1:05 PM",
-     hrs:"NO HOURS PUBLISHED", warn:"soft", note:"The weak link — Google lists no hours at all, and it is the lowest-rated of the nine. It sits on your way out of Bloomfield, so trying the door costs nothing."},
-    {n:7, name:"The Local Store – PEC", pid:"ChIJ-WUox_VK1okRsYh4stLmJTk", lat:43.9620048, lng:-77.2387175, at:"1:50 PM",
-     hrs:"Daily 10–6", warn:"", note:"Turn south onto Rd 12. 150+ makers, a gallery upstairs, goats out back. Latest close on the route — eat here."},
-    {n:8, name:"MacCool's Re-Use", pid:"ChIJjSPIXalL1okRmly8luUCF38", lat:43.9465288, lng:-77.2398816, at:"2:25 PM",
-     hrs:"Daily 10–5", warn:"", note:"Deepest point of the loop. Roadside barn, mid-century furniture, antique toys. Leave by 3:00 sharp."},
-    {n:9, name:"County RUST", pid:"ChIJ5XZ66-VJ1okR-ZA4nV-O_vk", lat:43.9527767, lng:-77.3505488, at:"3:20 PM",
-     hrs:"Fri & Sat only · closes 4 PM", warn:"hard", note:"Rd 12 carries you northwest into Wellington — no backtracking. 5.0★ on 9 reviews. Drake Devonshire is 4 minutes away for a drink."}
+    {n:1, name:"City Revival", pid:"ChIJ_TVqd5rL14kRisde0OsdXSs", lat:44.008399,  lng:-77.1399517, at:"10:00 AM", leg:"14 min from the B&B",
+     hrs:"Sat 9\u20135 \u00b7 open daily", warn:"", note:"Drive northeast to Picton first \u2014 the far corner. Designer consignment, not thrift. Opens 9, so it absorbs the wait for Mary Street."},
+    {n:2, name:"Second Time Around", pid:"ChIJW3n2jlbK14kRFItWV077wQ8", lat:44.0059146, lng:-77.1454659, at:"10:35 AM", leg:"5 min walk",
+     hrs:"Sat 10\u20133 \u00b7 CLOSED SUN", warn:"hard", note:"Closes 3 PM Saturday. Clearing it before 11 AM is the whole reason the loop runs east first."},
+    {n:3, name:"Mary Street Vintage", pid:"ChIJRRHMAezL14kRh3RdcKPMqbc", lat:44.0054492, lng:-77.1429213, at:"11:05 AM", leg:"3 min walk",
+     hrs:"Opens 11:00 \u00b7 closed Tue\u2013Thu", warn:"", note:"You arrive as the doors open. 5.0\u2605. Off Main, so it stays unpicked. The one for Suz."},
+    {n:4, name:"County Traders", pid:"ChIJNw_J82I11okRirG6dWmixP8", lat:43.984193,  lng:-77.2249426, at:"11:55 AM", leg:"12 min \u00b7 9 km west",
+     hrs:"Daily 10\u20135", warn:"", note:"Loyalist Parkway into Bloomfield. Family-run, fair prices, glassware and furniture. Easy to lose an hour \u2014 don't."},
+    {n:5, name:"Hand Works \u2013 Tammy Love", pid:"ChIJZbtATmM11okRkCA0OmcC26M", lat:43.9882186, lng:-77.2268514, at:"12:30 PM", leg:"600 m",
+     hrs:"Thu\u2013Sun \u00b7 hours unreliable", warn:"soft", note:"Open every drawer. Google reports \u201copen 24 hours\u201d Thu\u2013Sat \u2014 a data artifact, not a fact."},
+    {n:6, name:"Dead People's Stuff", pid:"ChIJ3YsG2n011okRhVTg9OGpQ8g", lat:43.9858234, lng:-77.2343582, at:"1:05 PM", leg:"700 m",
+     hrs:"NO HOURS PUBLISHED", warn:"soft", note:"The weak link \u2014 Google lists no hours at all, and it's the lowest-rated of the nine. It's on your way out of Bloomfield, so trying the door costs nothing."},
+    {n:7, name:"County RUST", pid:"ChIJ5XZ66-VJ1okR-ZA4nV-O_vk", lat:43.9527767, lng:-77.3505488, at:"1:40 PM", leg:"13 min \u00b7 12 km west",
+     hrs:"Fri & Sat only \u00b7 closes 4 PM", warn:"hard", note:"The furthest point from your bed (11.5 km). Hit at 1:40 you have 2h20 of slack against its 4 PM door \u2014 the old Picton-first loop left only 40 min. 5.0\u2605 on 9 reviews."},
+    {n:8, name:"The Local Store \u2013 PEC", pid:"ChIJ-WUox_VK1okRsYh4stLmJTk", lat:43.9620048, lng:-77.2387175, at:"2:30 PM", leg:"16 min \u00b7 back east on Rd 12",
+     hrs:"Daily 10\u20136", warn:"", note:"Latest close on the route, so lateness costs nothing here. 150+ makers, a gallery upstairs, goats out back. Eat if you're hungry."},
+    {n:9, name:"MacCool's Re-Use", pid:"ChIJjSPIXalL1okRmly8luUCF38", lat:43.9465288, lng:-77.2398816, at:"3:10 PM", leg:"3 min \u00b7 2 km",
+     hrs:"Daily 10\u20135", warn:"", note:"Closest stop to the B&B \u2014 3 km. Roadside barn, mid-century furniture, antique toys. Then six minutes home with the car full."}
   ];
 
   var el = document.getElementById('map-antiquing');
   var listEl = document.getElementById('routeList');
   if(!el || !listEl || typeof L === 'undefined') return;
 
-  /* ---- map ---- */
   var m = L.map('map-antiquing', {scrollWheelZoom:false, dragging:true, touchZoom:true, doubleClickZoom:true, zoomControl:true, attributionControl:true, tap:false});
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://openstreetmap.org/copyright">OSM</a>',maxZoom:19}).addTo(m);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'\u00a9 <a href="https://openstreetmap.org/copyright">OSM</a>',maxZoom:19}).addTo(m);
 
-  var line = STOPS.map(function(s){return [s.lat,s.lng];});
+  /* polyline: home -> 9 stops -> home */
+  var line = [[HOME.lat,HOME.lng]].concat(STOPS.map(function(s){return [s.lat,s.lng];}));
+  line.push([HOME.lat,HOME.lng]);
   L.polyline(line, {color:'#4f6f52', weight:3, opacity:0.75, dashArray:'6,6'}).addTo(m);
+
+  /* home pin */
+  var homeIcon = L.divIcon({className:'', html:'<div class="route-pin pin-home">\u2302</div>', iconSize:[30,30], iconAnchor:[15,15]});
+  L.marker([HOME.lat,HOME.lng], {icon:homeIcon}).addTo(m)
+   .bindPopup('<strong>\u2302 Start &amp; finish</strong><br>'+HOME.name+'<br><span style="font-size:12px;opacity:.75">'+HOME.addr+'</span>');
 
   var markers = {};
   STOPS.forEach(function(s){
     var cls = 'route-pin' + (s.warn==='hard' ? ' pin-hard' : (s.warn==='soft' ? ' pin-soft' : ''));
     var icon = L.divIcon({className:'', html:'<div class="'+cls+'">'+s.n+'</div>', iconSize:[28,28], iconAnchor:[14,14]});
     var mk = L.marker([s.lat,s.lng], {icon:icon}).addTo(m);
-    mk.bindPopup('<strong>'+s.n+'. '+s.name+'</strong><br><span style="opacity:.75">'+s.at+' · '+s.hrs+'</span><br><span style="font-size:12px">'+s.note+'</span>');
+    mk.bindPopup('<strong>'+s.n+'. '+s.name+'</strong><br><span style="opacity:.75">'+s.at+' \u00b7 '+s.hrs+'</span><br><span style="font-size:12px">'+s.note+'</span>');
     markers[s.n] = mk;
   });
   m.fitBounds(line, {padding:[30,30], maxZoom:12});
 
-  /* ---- list, synced to map ---- */
   var html = '';
   STOPS.forEach(function(s){
-    var badge = s.warn==='hard' ? '<span class="rl-warn">⚠ '+s.hrs+'</span>'
-              : s.warn==='soft' ? '<span class="rl-soft">⚑ '+s.hrs+'</span>'
+    var badge = s.warn==='hard' ? '<span class="rl-warn">\u26a0 '+s.hrs+'</span>'
+              : s.warn==='soft' ? '<span class="rl-soft">\u2691 '+s.hrs+'</span>'
               : '<span class="rl-hrs">'+s.hrs+'</span>';
     html += '<li class="route-item" data-stop="'+s.n+'">'
           +   '<div class="rl-num'+(s.warn==='hard'?' rl-num-hard':'')+'">'+s.n+'</div>'
           +   '<div class="rl-body">'
           +     '<div class="rl-top"><span class="rl-name">'+s.name+'</span><span class="rl-time">'+s.at+'</span></div>'
-          +     '<div class="rl-meta">'+badge+'</div>'
+          +     '<div class="rl-meta">'+badge+' <span class="rl-leg">\u00b7 '+s.leg+'</span></div>'
           +     '<div class="rl-note">'+s.note+'</div>'
-          +     '<a class="rl-link" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.name)+'&query_place_id='+s.pid+'" target="_blank" rel="noopener">Open in Maps →</a>'
+          +     '<a class="rl-link" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.name)+'&query_place_id='+s.pid+'" target="_blank" rel="noopener">Open in Maps \u2192</a>'
           +   '</div>'
           + '</li>';
   });
   listEl.innerHTML = html;
 
   listEl.addEventListener('click', function(e){
-    if(e.target.closest('.rl-link')) return;           /* let the real link through */
+    if(e.target.closest('.rl-link')) return;
     var li = e.target.closest('.route-item'); if(!li) return;
     var n = +li.getAttribute('data-stop'); var mk = markers[n]; if(!mk) return;
     [].slice.call(listEl.querySelectorAll('.route-item')).forEach(function(x){x.classList.toggle('active', x===li);});
@@ -1307,15 +1318,14 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
     mk.openPopup();
   });
 
-  /* ---- full-route handoff to Google Maps (origin + 7 waypoints + destination) ---- */
-  var origin = STOPS[0], dest = STOPS[STOPS.length-1], mids = STOPS.slice(1,-1);
+  /* full-route handoff: B&B -> 9 waypoints -> B&B (URL API caps waypoints at 9) */
   var url = 'https://www.google.com/maps/dir/?api=1'
-          + '&origin='          + encodeURIComponent(origin.name)
-          + '&origin_place_id=' + origin.pid
-          + '&destination='          + encodeURIComponent(dest.name)
-          + '&destination_place_id=' + dest.pid
-          + '&waypoints='          + mids.map(function(s){return encodeURIComponent(s.name);}).join('%7C')
-          + '&waypoint_place_ids=' + mids.map(function(s){return s.pid;}).join('%7C')
+          + '&origin='               + encodeURIComponent(HOME.addr)
+          + '&origin_place_id='      + HOME.pid
+          + '&destination='          + encodeURIComponent(HOME.addr)
+          + '&destination_place_id=' + HOME.pid
+          + '&waypoints='            + STOPS.map(function(s){return encodeURIComponent(s.name);}).join('%7C')
+          + '&waypoint_place_ids='   + STOPS.map(function(s){return s.pid;}).join('%7C')
           + '&travelmode=driving';
   var btn = document.getElementById('routeOpenAll');
   if(btn) btn.setAttribute('href', url);
